@@ -28,7 +28,7 @@ export const SalesInfo: FC<SalesInfoProps> = ({ tickets }): JSX.Element => {
             <h2 className='inline-block text-center mb-4 p-4 rounded-md bg-purple-200 text-purple-500 shadow-sm'>
                 {currentDate}
             </h2>
-            <div className='flex flex-col items-center lg:space-x-12 lg:flex-row'>
+            <div className='flex flex-col items-start justify-start space-y-4 lg:space-y-4 lg:items-center lg:space-x-12 lg:flex-row'>
                 {Object.keys(data).map((key, index) => (
                     <div
                         key={index}
