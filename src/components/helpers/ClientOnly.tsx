@@ -7,8 +7,8 @@ export const ClientOnly: FC = ({ children }): JSX.Element => {
     }, [])
     if (!isBrowser) {
         return (
-            <div className='fixed inset-0 bg-black/75 flex items-center justify-center'>
-                <div className='h-54 w-54 rounded-full bg-transparent border-8 border-purple-700 animate-spin'></div>
+            <div className='fixed inset-0 bg-white flex items-center justify-center'>
+                <div className='h-96 w-96 rounded-full bg-transparent border-8 border-purple-700 animate-spin'></div>
             </div>
         )
     }
