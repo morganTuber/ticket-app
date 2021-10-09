@@ -1,0 +1,5 @@
+export * from './customer'
+export * from './destination'
+export * from './paymentEnum'
+export * from './strapiResponse'
+export * from './ticket'

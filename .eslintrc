@@ -1,0 +1,24 @@
+{
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+        "@typescript-eslint",
+        "simple-import-sort"
+    ],
+    "parserOptions": {
+        "project": [
+            "./tsconfig.json"
+        ]
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
+        "next/core-web-vitals"
+    ],
+    "rules": {
+        "no-console": "warn",
+        "simple-import-sort/imports": "error",
+        "simple-import-sort/exports": "error"
+    }
+}

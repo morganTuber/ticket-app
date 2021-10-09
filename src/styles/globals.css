@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        @apply bg-gray-100 text-gray-500 p-4 font-Poppins lg:p-0;
+    }
+    .btn {
+        @apply inline-block font-medium px-4 py-3 rounded-md shadow-lg;
+    }
+    .focus {
+        @apply rounded-md focus:outline-none focus:border-transparent focus:ring-2 focus:ring-purple-700 focus:ring-offset-2;
+    }
+    .active {
+        @apply bg-purple-700 !text-white shadow-2xl !border-transparent;
+    }
+    .input {
+        @apply w-full px-4 py-2 mt-2 rounded-md border-[1px] border-gray-200 focus:ring-0 focus:outline-none focus:border-purple-700;
+    }
+    .label {
+        @apply text-gray-500;
+    }
+    .form-control {
+        @apply first-of-type:mt-0 mt-4;
+    }
+    .nav-btn {
+        @apply text-purple-700 border-2 border-purple-300;
+    }
+    .active-tab {
+        @apply absolute  inset-0 rounded-md z-[-10];
+    }
+}
