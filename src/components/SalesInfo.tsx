@@ -24,7 +24,7 @@ export const SalesInfo: FC<SalesInfoProps> = ({ tickets }): JSX.Element => {
         'Total Profit': `Rs ${totalProfit}`,
     }
     return (
-        <main>
+        <main className='max-w-xl mx-auto'>
             <h2 className='inline-block text-center mb-4 p-4 rounded-md bg-purple-200 text-purple-500 shadow-sm'>
                 {currentDate}
             </h2>
