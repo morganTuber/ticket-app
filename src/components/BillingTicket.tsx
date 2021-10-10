@@ -29,7 +29,9 @@ export const BillingTicket: FC<BillingTicketProps> = ({ ticket, totalTickets }) 
             <div className='flex items-center flex-col justify-between p-4 bg-gray-100 rounded-md border border-gray-200 space-y-2 lg:space-y-0 lg:flex-row'>
                 <p>
                     Token :{' '}
-                    {`${new Date().toLocaleDateString()}_${totalTickets + person}`}
+                    {`${new Date().toLocaleDateString()}_${
+                        totalTickets + person + 1
+                    }`}
                 </p>
                 <p>Expiration Date: {getExpiryDate(1).toLocaleDateString()}</p>
             </div>

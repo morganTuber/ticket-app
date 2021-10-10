@@ -14,13 +14,14 @@ interface BillingPageProps {
 const BillingPage: FC<BillingPageProps> = ({ tickets }): JSX.Element => {
     const router = useRouter()
     const query = router.query as Record<string, string>
+    const totalTicketSold = tickets.reduce((a, b) => a + b.personCount, 0)
     return (
         <ClientOnly>
             <Protected>
                 <Layout title='Tickets Overview'>
                     <section className='max-w-xl mx-auto my-6'>
                         <BillingTicket
-                            totalTickets={tickets.length}
+                            totalTickets={totalTicketSold}
                             ticket={query}
                         />
                     </section>
