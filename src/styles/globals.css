@@ -6,7 +6,7 @@
 
 @layer base {
     body {
-        @apply bg-gray-100 text-gray-500 p-4 font-Poppins lg:p-0;
+        @apply bg-gray-100 text-gray-500 p-4 font-Poppins lg:p-0 selection:bg-purple-600 selection:text-white;
     }
     .btn {
         @apply inline-block font-medium px-4 py-3 rounded-md shadow-sm lg:shadow-md;
