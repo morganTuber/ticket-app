@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import { getSession } from 'next-auth/client'
 import { FC } from 'react'
 
-import { BillingTicket, ClientOnly, Protected } from '../components'
+import { BillingTicket, ClientOnly, Layout, Protected } from '../components'
 import { ITicket } from '../typings'
 import { fetchData } from '../utils/fetchData'
 
@@ -17,9 +17,14 @@ const BillingPage: FC<BillingPageProps> = ({ tickets }): JSX.Element => {
     return (
         <ClientOnly>
             <Protected>
-                <section className='max-w-xl mx-auto my-6'>
-                    <BillingTicket totalTickets={tickets.length} ticket={query} />
-                </section>
+                <Layout title='Tickets Overview'>
+                    <section className='max-w-xl mx-auto my-6'>
+                        <BillingTicket
+                            totalTickets={tickets.length}
+                            ticket={query}
+                        />
+                    </section>
+                </Layout>
             </Protected>
         </ClientOnly>
     )
