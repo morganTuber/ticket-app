@@ -26,7 +26,6 @@ export const TicketModal = (): JSX.Element => {
     }
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        //TODO
         if (data) {
             addTicket(data)
                 .then(() => {
@@ -54,7 +53,7 @@ export const TicketModal = (): JSX.Element => {
     return (
         <AnimatePresence>
             {data && (
-                <motion.div className='fixed inset-0 flex items-center justify-center bg-gray-100 z-50'>
+                <motion.div className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50'>
                     <motion.form
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}

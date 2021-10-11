@@ -3,7 +3,6 @@ import { pickBy } from 'lodash'
 import { useSession } from 'next-auth/client'
 import { FC, useEffect, useMemo, useState } from 'react'
 import toast from 'react-hot-toast'
-import { HiPlus } from 'react-icons/hi'
 import * as Yup from 'yup'
 
 import { useTicketModalContext } from '../context'
@@ -177,7 +176,7 @@ export const Ticket: FC<TicketProps> = ({
             </div>
             <div className='form-control'>
                 <label className='label' htmlFor='customerName'>
-                    Customer Name (*Seperated by ,)
+                    Customer Name <span className='text-purple-700'>(*Seperated by ,)</span>
                 </label>
                 <input
                     type='text'

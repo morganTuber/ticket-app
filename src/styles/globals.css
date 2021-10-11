@@ -18,10 +18,10 @@
         @apply bg-purple-700 !text-white shadow-2xl !border-transparent;
     }
     .input {
-        @apply w-full px-4 py-2 mt-2 rounded-md border-[1px] border-gray-200 focus:ring-0 focus:outline-none focus:border-purple-700;
+        @apply w-full px-4 py-2 mt-2 rounded-md border border-gray-200 bg-gray-50 focus:ring-0 focus:outline-none focus:border-purple-700;
     }
     .label {
-        @apply inline-block text-gray-500 text-sm;
+        @apply inline-block text-sm;
     }
     .form-control {
         @apply first-of-type:mt-0 mt-6;

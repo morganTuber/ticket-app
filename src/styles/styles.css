@@ -80,6 +80,24 @@
         transform: rotate(360deg);
     }
 }
+@keyframes loading {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+.loader {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 100%;
+    background-color: transparent;
+    border: 16px solid transparent;
+    border-top: 16px solid #6d28d9;
+    border-bottom: 16px solid #6d28d9;
+    animation: loading 0.8s linear infinite;
+}
 @media print {
     body {
         background-color: #fff;
