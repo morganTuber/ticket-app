@@ -24,8 +24,10 @@ export const BillingTicket: FC<BillingTicketProps> = ({ ticket, totalTickets }) 
             className='print bg-white rounded-md p-4 shadow-sm space-y-4'
         >
             <IoBoatSharp size={200} className='mx-auto' />
-            <h1 className='text-center text-4xl font-semibold'>Company Name</h1>
-            <p className='text-center'>Kathmandu Nepal, 44600</p>
+            <h1 className='text-center text-4xl font-semibold'>
+                Dantakali Jal bihar Pvt. Ltd
+            </h1>
+            <p className='text-center'>Barahachhetr-2, Chatara</p>
             <div className='flex items-center flex-col justify-between p-4 bg-gray-100 rounded-md border border-gray-200 space-y-2 lg:space-y-0 lg:flex-row'>
                 <p>
                     Token :{' '}
