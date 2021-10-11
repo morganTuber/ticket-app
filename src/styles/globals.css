@@ -21,10 +21,10 @@
         @apply w-full px-4 py-2 mt-2 rounded-md border-[1px] border-gray-200 focus:ring-0 focus:outline-none focus:border-purple-700;
     }
     .label {
-        @apply text-gray-500;
+        @apply inline-block text-gray-500 text-sm;
     }
     .form-control {
-        @apply first-of-type:mt-0 mt-4;
+        @apply first-of-type:mt-0 mt-6;
     }
     .nav-btn {
         @apply text-purple-700 border-2 border-purple-300;

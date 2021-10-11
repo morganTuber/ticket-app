@@ -2,8 +2,6 @@ import { FC } from 'react'
 import { CgArrowsExchange } from 'react-icons/cg'
 import { IoBoatSharp } from 'react-icons/io5'
 
-import { getExpiryDate } from '../utils/getExpiryDate'
-
 export interface BillingTicketProps {
     ticket: Record<string, string>
     totalTickets: number
@@ -17,7 +15,7 @@ const generateArray = (length: number): number[] => {
 }
 export const BillingTicket: FC<BillingTicketProps> = ({ ticket, totalTickets }) => {
     const personArr = generateArray(+ticket.personCount)
-
+    const customers = ticket.customerName.split(',')
     const renderedList = personArr.map(person => (
         <div
             key={person}
@@ -35,7 +33,7 @@ export const BillingTicket: FC<BillingTicketProps> = ({ ticket, totalTickets }) 
                         totalTickets + person + 1
                     }`}
                 </p>
-                <p>Expiration Date: {getExpiryDate(1).toLocaleDateString()}</p>
+                <p>{customers[person]}</p>
             </div>
             <div className='flex items-center justify-between'>
                 <div className='text-center bg-gray-100 p-6 rounded-md shadow-sm border border-gray-200'>
@@ -50,10 +48,6 @@ export const BillingTicket: FC<BillingTicketProps> = ({ ticket, totalTickets }) 
             </div>
             <p className='text-center text-lg font-bold'>
                 Price: Rs {+ticket.totalPrice / +ticket.personCount}
-            </p>
-            <p className='text-center text-xs text-gray-400'>
-                *Purchased tickets cant be refunded and must be used before
-                expiration time
             </p>
         </div>
     ))

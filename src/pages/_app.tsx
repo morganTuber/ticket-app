@@ -8,8 +8,8 @@ import type { AppProps } from 'next/app'
 import { Provider } from 'next-auth/client'
 import { Toaster } from 'react-hot-toast'
 
-import { ClientOnly, NavBar } from '../components'
-import { LoadingContextProvider } from '../context/loadingContext'
+import { ClientOnly, NavBar, TicketModal } from '../components'
+import { LoadingContextProvider, TicketModalContextProvider } from '../context'
 
 function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
     return (
@@ -18,10 +18,13 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
                 <Toaster />
                 <Provider session={pageProps.session}>
                     <LoadingContextProvider>
-                        <NavBar />
-                        <AnimatePresence key={router.pathname}>
-                            <Component {...pageProps} />
-                        </AnimatePresence>
+                        <TicketModalContextProvider>
+                            <TicketModal />
+                            <NavBar />
+                            <AnimatePresence key={router.pathname}>
+                                <Component {...pageProps} />
+                            </AnimatePresence>
+                        </TicketModalContextProvider>
                     </LoadingContextProvider>
                 </Provider>
             </div>
