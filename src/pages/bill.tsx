@@ -8,22 +8,19 @@ import { ITicket } from '../typings'
 import { fetchData } from '../utils/fetchData'
 
 interface BillingPageProps {
-    tickets: ITicket[]
+    totalTickets: number
 }
 
-const BillingPage: FC<BillingPageProps> = ({ tickets }): JSX.Element => {
+const BillingPage: FC<BillingPageProps> = ({ totalTickets }): JSX.Element => {
     const router = useRouter()
     const query = router.query as Record<string, string>
-    const totalTicketSold = tickets.reduce((a, b) => a + b.personCount, 0)
+
     return (
         <ClientOnly>
             <Protected>
                 <Layout title='Tickets Overview'>
                     <section className='max-w-xl mx-auto my-6'>
-                        <BillingTicket
-                            totalTickets={totalTicketSold}
-                            ticket={query}
-                        />
+                        <BillingTicket totalTickets={totalTickets} ticket={query} />
                     </section>
                 </Layout>
             </Protected>
@@ -33,16 +30,17 @@ const BillingPage: FC<BillingPageProps> = ({ tickets }): JSX.Element => {
 export const getServerSideProps: GetServerSideProps = async context => {
     const session = await getSession(context)
     if (session && session.jwt) {
-        const tickets = await fetchData('/tickets', session.jwt)
+        const tickets = await fetchData<ITicket[]>('/tickets', session.jwt)
+        const totalTickets = tickets.reduce((a, b) => a + b.personCount, 0)
         return {
             props: {
-                tickets,
+                totalTickets,
             },
         }
     }
     return {
         props: {
-            tickets: [],
+            totalTickets: 0,
         },
     }
 }
