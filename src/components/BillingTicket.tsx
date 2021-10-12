@@ -19,14 +19,14 @@ export const BillingTicket: FC<BillingTicketProps> = ({ ticket, totalTickets }) 
     const renderedList = personArr.map(person => (
         <div
             key={person}
-            className='print bg-white rounded-md p-4 shadow-sm space-y-4'
+            className='p-4 space-y-4 bg-white rounded-md shadow-sm print'
         >
             <IoBoatSharp size={200} className='mx-auto' />
-            <h1 className='text-center text-4xl font-semibold'>
+            <h1 className='text-4xl font-semibold text-center'>
                 Dantakali Jal Bihar Pvt. Ltd
             </h1>
             <p className='text-center'>Barahachhetra-2, Chatara</p>
-            <div className='flex items-center flex-col justify-between p-4 bg-gray-100 rounded-md border border-gray-200 space-y-2 lg:space-y-0 lg:flex-row'>
+            <div className='flex flex-col items-center justify-between p-4 space-y-2 bg-gray-100 border border-gray-200 rounded-md lg:space-y-0 lg:flex-row'>
                 <p>
                     Token :{' '}
                     {`${new Date().toLocaleDateString()}_${
@@ -36,17 +36,17 @@ export const BillingTicket: FC<BillingTicketProps> = ({ ticket, totalTickets }) 
                 <p>{customers[person]}</p>
             </div>
             <div className='flex items-center justify-between'>
-                <div className='text-center bg-gray-100 p-6 rounded-md shadow-sm border border-gray-200'>
+                <div className='p-6 text-center bg-gray-100 border border-gray-200 rounded-md shadow-sm'>
                     <h2 className='text-gray-400'>From</h2>
-                    <p className='text-2xl mt-2 font-bold'>{ticket.from}</p>
+                    <p className='mt-2 text-2xl font-bold'>{ticket.from}</p>
                 </div>
                 <CgArrowsExchange className='text-6xl' />
-                <div className='text-center bg-gray-100 px-10 py-6 rounded-md shadow-sm border border-gray-200'>
+                <div className='px-10 py-6 text-center bg-gray-100 border border-gray-200 rounded-md shadow-sm'>
                     <h2 className='text-gray-400'>To</h2>
-                    <p className='text-2xl mt-2 font-bold'>{ticket.to}</p>
+                    <p className='mt-2 text-2xl font-bold'>{ticket.to}</p>
                 </div>
             </div>
-            <p className='text-center text-lg font-bold'>
+            <p className='text-lg font-bold text-center'>
                 Price: Rs {+ticket.totalPrice / +ticket.personCount}
             </p>
         </div>
@@ -54,7 +54,7 @@ export const BillingTicket: FC<BillingTicketProps> = ({ ticket, totalTickets }) 
     return (
         <div className='space-y-6'>
             <button
-                className='no-print block btn bg-purple-700 text-white text-lg px-14 py-4 mx-auto'
+                className='block py-4 mx-auto text-lg text-white bg-purple-700 no-print btn px-14'
                 type='button'
                 onClick={() => print()}
             >

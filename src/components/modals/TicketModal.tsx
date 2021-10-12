@@ -53,30 +53,30 @@ export const TicketModal = (): JSX.Element => {
     return (
         <AnimatePresence>
             {data && (
-                <motion.div className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50'>
+                <motion.div className='fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75'>
                     <motion.form
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 30 }}
                         transition={{ duration: 0.4 }}
                         onSubmit={handleSubmit}
-                        className='bg-white shadow-sm max-w-md w-full p-6 rounded-md space-y-4'
+                        className='w-full max-w-md p-6 space-y-4 bg-white rounded-md shadow-sm'
                     >
-                        <h3 className='text-xl text-center font-semibold tracking-wider'>
+                        <h3 className='text-xl font-semibold tracking-wider text-center'>
                             Ticket Details
                         </h3>
-                        <div className='h-px w-full bg-gray-200'></div>
+                        <div className='w-full h-px bg-gray-200'></div>
                         {renderedList(data)}
-                        <div className='h-px w-full bg-gray-200'></div>
-                        <div className='flex items-center justify-end space-x-2 text-white text-sm'>
+                        <div className='w-full h-px bg-gray-200'></div>
+                        <div className='flex items-center justify-end space-x-2 text-sm text-white'>
                             <button
                                 type='button'
                                 onClick={() => setData(null)}
-                                className='btn bg-red-700'
+                                className='bg-red-700 btn'
                             >
                                 Cancel
                             </button>
-                            <button type='submit' className='btn bg-purple-700'>
+                            <button type='submit' className='bg-purple-700 btn'>
                                 Confirm
                             </button>
                         </div>

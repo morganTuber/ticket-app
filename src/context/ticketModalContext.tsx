@@ -11,7 +11,7 @@ import { IFormik } from '../components'
 
 export interface ITicketData extends Partial<IFormik> {
     token: string
-    totalPrice:number
+    totalPrice: number
 }
 
 interface ITicketModalContext {

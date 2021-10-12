@@ -60,7 +60,7 @@ export const NavBar = (): JSX.Element | null => {
     if (!session) return null
     return (
         <AnimateSharedLayout>
-            <nav className='no-print text-center flex flex-col max-w-xl mx-auto bg-white p-4 shadow-sm rounded-md items-center justify-center space-y-4 no-print lg:space-y-0 lg:space-x-6 lg:flex-row lg:text-left'>
+            <nav className='flex flex-col items-center justify-center max-w-xl p-4 mx-auto space-y-4 text-center bg-white rounded-md shadow-sm no-print lg:space-y-0 lg:space-x-6 lg:flex-row lg:text-left'>
                 {routes.map(({ path, pathName }) => (
                     <Item
                         key={pathName}

@@ -5,9 +5,9 @@ export const ClientOnly: FC = ({ children }): JSX.Element => {
     useEffect(() => {
         setIsBrowser(true)
     }, [])
-    if (isBrowser) {
+    if (!isBrowser) {
         return (
-            <div className='fixed inset-0 bg-white flex items-center justify-center'>
+            <div className='fixed inset-0 flex items-center justify-center bg-white'>
                 <div className='loader'></div>
             </div>
         )

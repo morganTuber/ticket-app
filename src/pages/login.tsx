@@ -48,7 +48,7 @@ const Login: FC<ILogin> = ({ csrfToken }): JSX.Element => {
         }
     }, [router, data])
     return (
-        <div className='fixed bg-gray-50 inset-0 flex items-center justify-center'>
+        <div className='fixed inset-0 flex items-center justify-center bg-gray-50'>
             <form
                 className='min-w-[25rem] bg-white shadow-sm px-4 py-6 rounded-md'
                 method='post'
@@ -56,7 +56,7 @@ const Login: FC<ILogin> = ({ csrfToken }): JSX.Element => {
                 onSubmit={handleSubmit}
             >
                 <input name='csrfToken' type='hidden' defaultValue={csrfToken} />
-                <h3 className='mb-4 text-2xl text-center font-bold'>Login</h3>
+                <h3 className='mb-4 text-2xl font-bold text-center'>Login</h3>
                 <div className='form-control'>
                     <label htmlFor='identifier'>Username</label>
                     <input
@@ -87,7 +87,7 @@ const Login: FC<ILogin> = ({ csrfToken }): JSX.Element => {
                 </div>
                 <button
                     type='submit'
-                    className='btn w-full bg-purple-700 text-white mt-4 shadow-none'
+                    className='w-full mt-4 text-white bg-purple-700 shadow-none btn'
                 >
                     Login
                 </button>

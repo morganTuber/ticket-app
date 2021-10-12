@@ -25,17 +25,17 @@ export const SalesInfo: FC<SalesInfoProps> = ({ tickets }): JSX.Element => {
     }
     return (
         <main className='max-w-xl mx-auto'>
-            <h2 className='inline-block text-center mb-4 p-4 rounded-md bg-purple-200 text-purple-500 shadow-sm'>
+            <h2 className='inline-block p-4 mb-4 text-center text-purple-500 bg-purple-200 rounded-md shadow-sm'>
                 {currentDate}
             </h2>
             <div className='flex flex-col items-start justify-start space-y-4 lg:space-y-0 lg:items-center lg:space-x-12 lg:flex-row'>
                 {Object.keys(data).map((key, index) => (
                     <div
                         key={index}
-                        className='bg-white shadow-sm rounded-md px-12 py-6'
+                        className='px-12 py-6 bg-white rounded-md shadow-sm'
                     >
                         <p className='text-gray-400'>{key}</p>
-                        <h3 className='text-4xl font-semibold mt-2'>
+                        <h3 className='mt-2 text-4xl font-semibold'>
                             {data[key as keyof typeof data]}
                         </h3>
                     </div>

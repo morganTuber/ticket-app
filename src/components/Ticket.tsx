@@ -101,7 +101,7 @@ export const Ticket: FC<TicketProps> = ({
     }, [values])
     return (
         <form
-            className='bg-white p-4 shadow-sm rounded-md max-w-xl mx-auto'
+            className='max-w-xl p-4 mx-auto bg-white rounded-md shadow-sm'
             onSubmit={handleSubmit}
         >
             {isCustomised && customers ? (
@@ -176,7 +176,8 @@ export const Ticket: FC<TicketProps> = ({
             </div>
             <div className='form-control'>
                 <label className='label' htmlFor='customerName'>
-                    Customer Name <span className='text-purple-700'>(*Seperated by ,)</span>
+                    Customer Name{' '}
+                    <span className='text-purple-700'>(*Seperated by ,)</span>
                 </label>
                 <input
                     type='text'
@@ -188,7 +189,7 @@ export const Ticket: FC<TicketProps> = ({
                     <p className={errorClass}>{errors.customerName}</p>
                 ) : null}
             </div>
-            <div className='flex gap-4 items-center form-control flex-wrap'>
+            <div className='flex flex-wrap items-center gap-4 form-control'>
                 <div className='flex-1'>
                     <label className='label' htmlFor='paymentMethod'>
                         Select method of Payment
@@ -245,7 +246,7 @@ export const Ticket: FC<TicketProps> = ({
             </div>
             <button
                 type='submit'
-                className='btn ml-auto flex items-center justify-center bg-purple-700 text-lg text-white mt-4 focus'
+                className='flex items-center justify-center mt-4 ml-auto text-lg text-white bg-purple-700 btn focus'
             >
                 Create Ticket
             </button>

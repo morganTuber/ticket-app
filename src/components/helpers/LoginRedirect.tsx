@@ -6,7 +6,7 @@ import Link from 'next/link'
  */
 export const LoginRedirect = (): JSX.Element => {
     return (
-        <div className='max-w-lg mx-auto text-center space-y-4'>
+        <div className='max-w-lg mx-auto space-y-4 text-center'>
             <Image
                 src='/images/auth.svg'
                 width={600}
@@ -17,7 +17,7 @@ export const LoginRedirect = (): JSX.Element => {
                 You must be authenticated to view this page
             </h3>
             <Link href='/login'>
-                <a className='btn bg-red-700 text-white'>Login</a>
+                <a className='text-white bg-red-700 btn'>Login</a>
             </Link>
         </div>
     )
