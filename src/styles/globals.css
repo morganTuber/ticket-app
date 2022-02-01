@@ -6,10 +6,10 @@
 
 @layer base {
     body {
-        @apply bg-gray-100 text-gray-500 p-4 font-Poppins lg:p-0 selection:bg-purple-600 selection:text-white;
+        @apply p-4 text-gray-500 bg-gray-100 font-Poppins lg:p-0 selection:bg-purple-600 selection:text-white;
     }
     .btn {
-        @apply inline-block font-medium px-4 py-3 rounded-md shadow-sm lg:shadow-md;
+        @apply inline-block px-4 py-3 font-medium rounded-md shadow-sm lg:shadow-md;
     }
     .focus {
         @apply rounded-md focus:outline-none focus:border-transparent focus:ring-2 focus:ring-purple-700 focus:ring-offset-2;
@@ -18,18 +18,21 @@
         @apply bg-purple-700 !text-white shadow-2xl !border-transparent;
     }
     .input {
-        @apply w-full px-4 py-2 mt-2 rounded-md border border-gray-200 bg-gray-50 focus:ring-0 focus:outline-none focus:border-purple-700;
+        @apply w-full px-4 py-2 mt-2 text-gray-400 border border-gray-200 rounded-md bg-gray-50 focus:ring-0 focus:outline-none focus:border-purple-300 selection:text-gray-200;
     }
     .label {
-        @apply inline-block text-sm;
+        @apply inline-block text-sm text-gray-400;
     }
     .form-control {
-        @apply first-of-type:mt-0 mt-6;
+        @apply mt-6 first-of-type:mt-0;
     }
     .nav-btn {
         @apply text-purple-700 border-2 border-purple-300;
     }
     .active-tab {
         @apply absolute  inset-0 rounded-md z-[-10];
+    }
+    .error-border {
+        @apply border-red-300 focus:border-red-400;
     }
 }

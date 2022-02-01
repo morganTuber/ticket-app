@@ -9,6 +9,7 @@ import { useTicketModalContext } from '../context'
 import { ICustomer, IDestination, PaymentMethodEnum } from '../typings'
 import { calculateDiscount } from '../utils/calculateDiscount'
 import { getBoatRoute } from '../utils/getBoatRoute'
+import { FormField } from '.'
 
 //* FORM INITIAL VALUES TYPE
 export interface IFormik {
@@ -27,13 +28,13 @@ interface TicketProps {
     destinations: IDestination[]
     customers?: ICustomer[]
 }
-const initialValues = (from: string, to: string): IFormik => ({
+const initialValues = (from: string, to: string, customerType: string): IFormik => ({
     from,
     to,
+    customerType,
     personCount: 1,
     paymentMethod: PaymentMethodEnum.Cash,
     discount: 0,
-    customerType: '',
     referenceToken: '',
     customerName: '',
 })
@@ -46,7 +47,6 @@ const validationSchema = Yup.object().shape({
     referenceToken: Yup.string().min(6),
     customerName: Yup.string().required().min(4),
 })
-const errorClass = 'text-red-500 font-medium mt-2'
 export const Ticket: FC<TicketProps> = ({
     isCustomised,
     destinations,
@@ -66,7 +66,8 @@ export const Ticket: FC<TicketProps> = ({
     const { getFieldProps, handleSubmit, values, touched, errors } = useFormik({
         initialValues: initialValues(
             destinations[0].destination1,
-            destinations[0].destination1
+            destinations[0].destination1,
+            customers ? customers[0].type : ''
         ),
         validationSchema,
         enableReinitialize: true,
@@ -105,143 +106,85 @@ export const Ticket: FC<TicketProps> = ({
             onSubmit={handleSubmit}
         >
             {isCustomised && customers ? (
-                <div className='form-control'>
-                    <label className='label' htmlFor='customerType'>
-                        Customer Type
-                    </label>
-                    <select
-                        {...getFieldProps('customerType')}
-                        className='input'
-                        id='customerType'
-                    >
-                        {customers.map((customerType, index) => (
-                            <option
-                                key={index}
-                                value={customerType.type.toLowerCase()}
-                            >
-                                {customerType.type}
-                            </option>
-                        ))}
-                    </select>
-                </div>
+                <FormField
+                    data={{
+                        id: 'customerType',
+                        label: 'Customer Type',
+                        options: [...customers.map(customer => customer.type)],
+                    }}
+                    touched={touched.customerType}
+                    error={errors.customerType}
+                    formikProps={getFieldProps('customerType')}
+                />
             ) : null}
             <div className='flex items-center gap-4 form-control'>
-                <div>
-                    <label className='label' htmlFor='from'>
-                        From
-                    </label>
-                    <select className='input' {...getFieldProps('from')} id='from'>
-                        {destinationList.map((destination, index) => (
-                            <option key={index} value={destination.toLowerCase()}>
-                                {destination.toLowerCase()}
-                            </option>
-                        ))}
-                    </select>
-                    {touched.from && errors.from ? (
-                        <p className={errorClass}>{errors.from}</p>
-                    ) : null}
-                </div>
-                <div>
-                    <label className='label' htmlFor='to'>
-                        To
-                    </label>
-                    <select className='input' {...getFieldProps('to')} id='to'>
-                        {destinationList.map((destination, index) => (
-                            <option key={index} value={destination.toLowerCase()}>
-                                {destination.toLowerCase()}
-                            </option>
-                        ))}
-                    </select>
-                    {touched.to && errors.to ? (
-                        <p className={errorClass}>{errors.to}</p>
-                    ) : null}
-                </div>
-            </div>
-            <div className='form-control'>
-                <label className='label' htmlFor='personCount'>
-                    Number of People
-                </label>
-                <input
-                    className='input'
-                    {...getFieldProps('personCount')}
-                    type='number'
-                    id='personCount'
+                <FormField
+                    data={{ id: 'from', options: [...destinationList] }}
+                    touched={touched.from}
+                    error={errors.from}
+                    formikProps={getFieldProps('from')}
                 />
-
-                {touched.personCount && errors.personCount ? (
-                    <p className={errorClass}>{errors.personCount}</p>
-                ) : (
-                    ''
-                )}
-            </div>
-            <div className='form-control'>
-                <label className='label' htmlFor='customerName'>
-                    Customer Name{' '}
-                    <span className='text-purple-700'>(*Seperated by ,)</span>
-                </label>
-                <input
-                    type='text'
-                    className='input'
-                    id='customerName'
-                    {...getFieldProps('customerName')}
+                <FormField
+                    data={{ id: 'to', options: [...destinationList] }}
+                    touched={touched.to}
+                    error={errors.to}
+                    formikProps={getFieldProps('to')}
                 />
-                {touched.customerName && errors.customerName ? (
-                    <p className={errorClass}>{errors.customerName}</p>
-                ) : null}
             </div>
+            <FormField
+                data={{
+                    id: 'personCount',
+                    label: 'Number of People',
+                    className: 'form-control',
+                    type: 'number',
+                }}
+                touched={touched.personCount}
+                error={errors.personCount}
+                formikProps={getFieldProps('personCount')}
+            />
+            <FormField
+                data={{
+                    id: 'customerName',
+                    label: `Customer Name (Separated by ,)`,
+                    className: 'form-control',
+                }}
+                touched={touched.customerName}
+                error={errors.customerName}
+                formikProps={getFieldProps('customerName')}
+            />
             <div className='flex flex-wrap items-center gap-4 form-control'>
-                <div className='flex-1'>
-                    <label className='label' htmlFor='paymentMethod'>
-                        Select method of Payment
-                    </label>
-                    <select
-                        {...getFieldProps('paymentMethod')}
-                        className='input'
-                        id='paymentMethod'
-                    >
-                        {(
-                            Object.keys(PaymentMethodEnum) as Array<
+                <FormField
+                    data={{
+                        id: 'paymentMethod',
+                        className: 'flex-1',
+                        options: [
+                            ...(Object.keys(PaymentMethodEnum) as Array<
                                 keyof typeof PaymentMethodEnum
-                            >
-                        ).map((item, index) => (
-                            <option key={index} value={item}>
-                                {item}
-                            </option>
-                        ))}
-                    </select>
-                </div>
+                            >),
+                        ],
+                    }}
+                    touched={touched.paymentMethod}
+                    error={errors.paymentMethod}
+                    formikProps={getFieldProps('paymentMethod')}
+                />
                 {isOnline && (
-                    <div>
-                        <label className='label' htmlFor='reference'>
-                            Reference Code
-                        </label>
-                        <input
-                            type='input'
-                            className='input'
-                            id='reference'
-                            {...getFieldProps('referenceToken')}
-                            required
-                        />
-                        {touched.referenceToken && errors.referenceToken ? (
-                            <p className={errorClass}>{errors.referenceToken}</p>
-                        ) : null}
-                    </div>
+                    <FormField
+                        data={{
+                            id: 'referenceToken',
+                            label: 'Reference Token',
+                        }}
+                        error={errors.referenceToken}
+                        touched={touched.referenceToken}
+                        formikProps={getFieldProps('referenceToken')}
+                    />
                 )}
                 {values.paymentMethod !== PaymentMethodEnum.Cash && (
-                    <div>
-                        <label className='label' htmlFor='discount'>
-                            Discount
-                        </label>
-                        <input
-                            {...getFieldProps('discount')}
-                            id='discount'
-                            className='input'
-                            type='number'
-                        />
-                        {touched.discount && errors.discount ? (
-                            <p className={errorClass}>{errors.discount}</p>
-                        ) : null}
-                    </div>
+                    <FormField
+                        data={{ id: 'discount' }}
+                        touched={touched.discount}
+                        error={errors.discount}
+                        formikProps={getFieldProps('discount')}
+                    />
                 )}
             </div>
             <button
